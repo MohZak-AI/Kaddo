@@ -1,0 +1,6 @@
+Kaddo flame mascot
+Original artwork generated for Kaddo with OpenAI's built-in ImageGen tool.
+Five transparent six-frame strips: idle, thinking, happy, sleeping, celebrating.
+Generation prompts and provenance: assets/flame-pet/prompts.md in the source project.
+
+Legacy bundled cat artwork remains credited separately in SpriteLicense.txt.

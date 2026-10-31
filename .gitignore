@@ -1,0 +1,19 @@
+.build/
+.swiftpm/
+.DS_Store
+DerivedData/
+*.xcuserstate
+*.xcresult
+
+# Local credentials and environment-specific settings.
+.env
+.env.*
+!.env.example
+
+# Keep written validation reports; omit generated logs, traces, captures and local data.
+/artifacts/**
+!/artifacts/**/
+!/artifacts/**/*.md
+
+# Local agent review evidence.
+.omo/

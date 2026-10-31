@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120" role="img" aria-labelledby="title desc">
+  <title id="title">How Kaddo handles a message</title>
+  <desc id="desc">Flowchart showing local action routing, assistant context, model provider, tools, document retrieval, follow-ups and user-facing replies.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a0a0a0"/></marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#818cf8"/></marker>
+    <style>
+      text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#fafafa}
+      .title{font-size:36px;font-weight:700;letter-spacing:-.6px}.subtitle{font-size:17px;fill:#a0a0a0}
+      .label{font-size:13px;font-weight:600;letter-spacing:1.4px;fill:#a0a0a0}
+      .head{font-size:20px;font-weight:600}.body{font-size:15px;fill:#c4c4c4}.small{font-size:13px;fill:#a0a0a0}
+      .card{fill:#141414;stroke:#2a2a2a;stroke-width:1.5}.card2{fill:#1c1c1c;stroke:#2a2a2a;stroke-width:1.5}
+      .blue{fill:#17182b;stroke:#6366f1;stroke-width:1.7}.green{fill:#122017;stroke:#22c55e;stroke-width:1.7}
+      .amber{fill:#241d11;stroke:#f59e0b;stroke-width:1.7}.line{fill:none;stroke:#777;stroke-width:2;marker-end:url(#arrow)}
+      .lineBlue{fill:none;stroke:#818cf8;stroke-width:2.2;marker-end:url(#arrowBlue)}
+      .dashed{stroke-dasharray:7 7}
+    </style>
+  </defs>
+  <rect width="1440" height="1120" fill="#0a0a0a"/>
+  <text x="64" y="78" class="title">How Kaddo handles a message</text>
+  <text x="64" y="112" class="subtitle">From what you type or upload to the reply, action, or follow-up question</text>
+
+  <!-- Main message route -->
+  <text x="64" y="166" class="label">MESSAGE ROUTE</text>
+  <rect x="64" y="190" width="250" height="106" rx="12" class="card2"/>
+  <text x="88" y="229" class="head">1 · Your input</text>
+  <text x="88" y="258" class="body">Chat, command, follow-up,</text><text x="88" y="280" class="body">or a document question</text>
+
+  <path d="M314 243 H367" class="line"/>
+  <polygon points="450,183 534,243 450,303 366,243" fill="#1c1c1c" stroke="#6366f1" stroke-width="1.7"/>
+  <text x="450" y="237" text-anchor="middle" class="body">Clear offline</text><text x="450" y="258" text-anchor="middle" class="body">action?</text>
+
+  <path d="M534 243 H595" class="line"/><text x="551" y="227" class="small">yes</text>
+  <rect x="595" y="190" width="248" height="106" rx="12" class="green"/>
+  <text x="619" y="229" class="head">2a · Local action</text>
+  <text x="619" y="258" class="body">Recognized pattern → planner</text><text x="619" y="280" class="body">Works without an AI provider</text>
+
+  <path d="M843 243 H906" class="line"/>
+  <rect x="906" y="190" width="240" height="106" rx="12" class="card"/>
+  <text x="930" y="229" class="head">Planner result</text>
+  <text x="930" y="258" class="body">Saved / read / needs details</text><text x="930" y="280" class="body">Kaddo returns a confirmation</text>
+
+  <path d="M450 303 V352 H610" class="lineBlue"/><text x="466" y="337" class="small">no / flexible request</text>
+  <rect x="610" y="352" width="365" height="126" rx="12" class="blue"/>
+  <text x="638" y="389" class="head">2b · AssistantCoordinator</text>
+  <text x="638" y="418" class="body">Adds recent chat, pending question,</text><text x="638" y="441" class="body">timer state and relevant app context</text>
+  <text x="638" y="463" class="small">It manages turns, cancellation and tool limits.</text>
+
+  <path d="M975 415 H1045" class="lineBlue"/>
+  <rect x="1045" y="352" width="330" height="126" rx="12" class="blue"/>
+  <text x="1073" y="389" class="head">3 · Selected model</text>
+  <text x="1073" y="418" class="body">OpenAI · DeepSeek · Ollama</text><text x="1073" y="441" class="body">Answers or requests a registered tool</text>
+  <text x="1073" y="463" class="small">Provider is chosen in AI settings.</text>
+
+  <!-- Model branches -->
+  <path d="M1210 478 V535 H1050" class="line"/>
+  <path d="M1210 478 V535 H1270" class="line"/>
+  <rect x="770" y="535" width="355" height="130" rx="12" class="card"/>
+  <text x="798" y="573" class="head">4a · Tool requested</text>
+  <text x="798" y="602" class="body">Kaddo checks tool name, argument types,</text><text x="798" y="625" class="body">IDs and action rules before execution</text><text x="798" y="648" class="small">Calls run in sequence, up to 8 per message.</text>
+  <rect x="1190" y="535" width="185" height="130" rx="12" class="green"/>
+  <text x="1213" y="573" class="head">4b · Reply</text>
+  <text x="1213" y="602" class="body">Answer, result,</text><text x="1213" y="625" class="body">or clarification</text>
+
+  <path d="M947 665 V711" class="line"/>
+  <rect x="770" y="711" width="355" height="112" rx="12" class="card2"/>
+  <text x="798" y="749" class="head">5 · App performs the action</text>
+  <text x="798" y="778" class="body">Planner or knowledge store reads/writes</text><text x="798" y="801" class="small">Model never gets direct database access.</text>
+  <path d="M1125 767 H1185 V665" class="line"/>
+  <path d="M1190 600 H1154 V296 H1026" class="line dashed"/>
+  <text x="1160" y="435" class="small" transform="rotate(-90 1160 435)">result goes back for final response</text>
+
+  <!-- Follow-up and document lanes -->
+  <text x="64" y="542" class="label">FOLLOW-UPS</text>
+  <rect x="64" y="566" width="570" height="124" rx="12" class="amber"/>
+  <text x="90" y="604" class="head">“that”, “the second one”, “make it 30 minutes”</text>
+  <text x="90" y="634" class="body">Kaddo includes recent turns and pending-question context.</text>
+  <text x="90" y="660" class="body">If target or details are unclear, the model should ask; it may still lose the reference.</text>
+  <path d="M350 566 V478" class="line dashed"/>
+
+  <text x="64" y="754" class="label">DOCUMENT QUESTIONS</text>
+  <rect x="64" y="778" width="570" height="136" rx="12" class="card"/>
+  <text x="90" y="816" class="head">Uploaded file → extracted text → local search</text>
+  <text x="90" y="846" class="body">Kaddo retrieves relevant chunks from the permitted documents.</text>
+  <text x="90" y="872" class="body">The selected provider gets the question + bounded excerpts.</text>
+  <text x="90" y="898" class="small">Separate grounded answer path; no action tools in that answer.</text>
+  <path d="M634 845 H700 V478" class="line dashed"/>
+
+  <rect x="64" y="958" width="1311" height="96" rx="12" class="card2"/>
+  <text x="92" y="997" class="head">Key idea</text>
+  <text x="220" y="997" class="body">The model interprets and proposes. Kaddo supplies context, validates tool requests, performs app changes,</text>
+  <text x="220" y="1026" class="body">and shows the outcome. Follow-up quality depends on whether the right context reaches the model.</text>
+  <text x="64" y="1090" class="small">Current Kaddo flow · based on AssistantCoordinator, KaddoTools, document retrieval, and provider routing</text>
+</svg>

@@ -1,0 +1,19 @@
+services:
+  pgvector:
+    image: pgvector/pgvector:0.8.0-pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: kaddo
+      POSTGRES_USER: kaddo
+      POSTGRES_PASSWORD: ${KADDO_PGVECTOR_PASSWORD:-kaddo-local}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - kaddo-pgvector:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kaddo -d kaddo"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+volumes:
+  kaddo-pgvector:
