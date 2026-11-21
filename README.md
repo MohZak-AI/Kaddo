@@ -4,7 +4,7 @@
 
 Kaddo pairs an animated desktop pet with a natural-language study planner and a local document library. Capture a deadline, find a note, or ask a question about a saved PDF without leaving your desktop.
 
-**Swift 6 · AppKit · SwiftUI · SQLite · macOS 13+**
+**Swift 6.2+ · AppKit · SwiftUI · SQLite · macOS 13+**
 
 [Get started](#run-locally) · [Architecture](docs/current-architecture.md) · [Test plan](docs/test-plan.md)
 
@@ -30,7 +30,7 @@ Kaddo pairs an animated desktop pet with a natural-language study planner and a 
 
 ## Run locally
 
-Requires macOS 13 or later, Swift 6, and Xcode or Xcode Command Line Tools. The first build downloads SwiftPM dependencies.
+Requires macOS 13 or later, Swift 6.2 or later (Xcode 26 or later), and Xcode or Xcode Command Line Tools. The first build downloads SwiftPM dependencies.
 
 ```sh
 git clone https://github.com/MohZak-AI/Kaddo.git
